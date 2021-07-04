@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Ubuntu;
+    src: url('Ubuntu-L.ttf');
+}
+
+body {
+    font-family: Ubuntu;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+}
