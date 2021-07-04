@@ -2,7 +2,6 @@
 $page_title = "Sign-up";
 $errors = []; # associative array for errors
 
-include './header.php';
 include './connect.php';
 include './util.php';
 
@@ -40,12 +39,14 @@ if (isset($_POST['submit'])) {
         $result = $conn -> query($query_insert);
         if ($conn -> insert_id > 0) {
             echo "Success";
-            header('location:login.php?msg=success');
+            header('location:login.php?success=ok');
         } else {
             echo "Something wrong";
         }
     }
 }
+
+    include './header.php';
 ?>
 <main class="container-fluid">
     <div class="container">
