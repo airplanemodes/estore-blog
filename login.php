@@ -26,7 +26,7 @@
             $query = "SELECT * FROM users WHERE email = '$email';";
             $result = $conn->query($query);
 
-            // check if atleast one row has returned on answer
+            // check if at least one SQL table row has returned on answer
             if(mysqli_num_rows($result) == 1) {
                 $user = mysqli_fetch_assoc($result);
 
@@ -37,18 +37,17 @@
                     // next security layer
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['user_name'] = $user['username'];
+                    $_SESSION['user_img'] = isset($user['img_url']) && strlen($user['img_url']) > 10 ? $user['img_url'] : "https://cdn.pixabay.com/photo/2014/09/27/13/46/question-mark-463497_960_720.jpg";
                     $_SESSION['user_ip'] = $_SERVER['REMOTE_ADDR'];
                     $_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
-                    header('location:products.php');
+                    header('location:index.php');
 
                 } else {
-                    echo "Something wrong";
-
+                    $errors['general'] = "Access denied.";
                 }
                 
             } else {
-                echo "Something wrong";
-
+                $errors['general'] = "Access denied.";
             }
         }
     }
@@ -69,6 +68,7 @@
             <input type="password" name="password" class="form-control" value="<?= old('password') ?>">
                 <small class="text-danger"><?= showError("password", $errors) ?></small>
         </div>
+        <small class="text-danger"><?= showError("general", $errors) ?></small>
         <button name="submit" class="btn btn-dark mt-3 w-100 formSubmitBtn">Login</button>
     </form>
     </div>

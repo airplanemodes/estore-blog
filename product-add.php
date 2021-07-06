@@ -3,7 +3,7 @@
     $errors = []; # associative array for errors
 
     include './connect.php';
-    include './util.php';
+    include_once './util.php';
 
     session_start();
 
@@ -66,7 +66,7 @@
                 <small class="text-danger"><?= showError("info", $errors) ?></small>
         </div>
         <div>
-            <label>Price</label>
+            <label>Price USD</label>
             <input type="number" name="price" class="form-control" value="<?= old('price') ?>">
                 <small class="text-danger"><?= showError("price", $errors) ?></small>
         </div>

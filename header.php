@@ -1,9 +1,10 @@
 <?php
+    include_once './util.php';
+    
     if (session_id() == '') {
         session_start();
     }
-
-    include_once './util.php';
+    
     $user = user_verify();
 
     include './head.php';
@@ -23,6 +24,7 @@
             <span class="me-5 text-warning">Welcome <?= $_SESSION['user_name'] ?>!</span>
             <a href="products.php" class="text-white me-2">Products</a>
             <a href="logout.php" class="text-white me-2">Logout</a>
+            <div style="float:right; width:32px; height:32px; background-image:url(<?= $_SESSION["user_img"] ?>); background-size:cover; background-position:center;border-radius:50%;"></div>
         <?php endif; ?>
         <?php if(!$user) : ?>
             <a href="login.php" class="text-white me-2">Login</a>

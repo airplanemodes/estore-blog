@@ -1,7 +1,7 @@
 <?php
     $page_title = "Delete product";
-    include './connect.php';
-    include './util.php';
+    include_once './connect.php';
+    include_once './util.php';
 
     session_start();
 

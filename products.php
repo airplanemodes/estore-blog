@@ -1,7 +1,7 @@
 <?php
     $page_title = "Products";
     include './connect.php';
-    include './util.php';
+    include_once './util.php';
 
     session_start();
 
@@ -45,7 +45,7 @@
                 <tr>
                     <td><?= $item['id'] ?></td>
                     <td><?= $item['title'] ?></td>
-                    <td><?= $item['price'] ?></td>
+                    <td><?= $item['price'] ?>$</td>
                     <td>
                         <a href="product-edit.php?editid=<?= $item['id'] ?>" class="badge bg-dark">Edit</a>
                         <a href="#" onclick="delProd(<?= $item['id'] ?>)" class="badge bg-danger">Delete</a>
