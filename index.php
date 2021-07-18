@@ -4,18 +4,25 @@
     include_once './header.php';
 
     $page_title = "Home";
-    
+
     if ($user) {
-        $show_limit = 0;
-        $query = "SELECT * FROM products WHERE user_id = {$_SESSION['user_id']} LIMIT {$show_limit}, 10";
+        
+        $query_for_pages = "SELECT COUNT(*) as total FROM products WHERE user_id = {$_SESSION['user_id']};";
+        $result_pages = $conn->query($query_for_pages);
+        $total = mysqli_fetch_assoc($result_pages);
+
+        $per_page = 4;
+        $total_pages = ceil($total["total"]/$per_page);
+        $page = isset($_GET["page"]) ? ($_GET["page"] - 1) * $per_page : 0 ;
+
+        $query = "SELECT * FROM products WHERE user_id = {$_SESSION['user_id']} LIMIT {$page}, {$per_page}";
         $result = $conn -> query($query);
-    
+
         $arr = [];
         while ($row = mysqli_fetch_assoc($result)) {
             array_push($arr, $row);
         }
     
-        # work log
         // echo "<pre>";
         // print_r($arr);
         // echo "</pre>";
@@ -24,6 +31,13 @@
 <main class="container-fluid p-5">
     <div class="container">
         <h1>Welcome</h1>
+        <!-- if someone logged -->
+        <?php if($user) : ?>
+        <div class="d-flex fs-4">Pages:<?php for ($i = 0; $i < $total_pages; $i++) : ?>
+            <a href="index.php?page=<?= $i+1 ?>" class="ms-2 mb-2 btn btn-dark"><?= $i+1 ?></a>
+            <?php endfor; ?>
+        </div>
+        <?php endif; ?>
         <div class="row">
             <?php if($user) : ?>
                 <?php foreach ($arr as $item) : ?>
@@ -33,7 +47,7 @@
                           <div class="card-body">
                             <h5 class="card-title"><?= $item['title'] ?></h5>
                             <p class="card-text"><?= $item['info'] ?></p>
-                            <a href="#" class="btn btn-dark">Go somewhere</a>
+                            <a href="#" class="btn btn-dark">Contact seller</a>
                           </div>
                       </div>
                     </div>

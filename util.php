@@ -1,9 +1,11 @@
 <?php
-// Login security function
+// login security
 function user_verify() {
     $verify = false;
     if(isset($_SESSION['user_id'])) {
+        // is an IP address, stored at the session match the current user's IP?
         if(isset($_SESSION['user_ip']) && $_SESSION['user_ip'] == $_SERVER['REMOTE_ADDR']) {
+            // is a web browser, stored at the session match the current user's browser?
             if(isset($_SESSION['user_agent']) && $_SESSION['user_agent'] == $_SERVER['HTTP_USER_AGENT']) {
                 $verify = true;
             }
