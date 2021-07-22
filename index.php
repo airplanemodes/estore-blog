@@ -7,9 +7,13 @@
 
     if ($user) {
         
+        # SQL query assigning to the variable
         $query_for_pages = "SELECT COUNT(*) as total FROM products WHERE user_id = {$_SESSION['user_id']};";
-        $result_pages = $conn->query($query_for_pages);
-        $total = mysqli_fetch_assoc($result_pages);
+
+        # '$conn' variable contains mysqli_connect function 
+        # query() is a built-in method of that function
+        $result_pages = $conn->query($query_for_pages); // SQL query sending
+        $total = mysqli_fetch_assoc($result_pages); // fetching a result row as an associative array
 
         $per_page = 4;
         $total_pages = ceil($total["total"]/$per_page);
