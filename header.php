@@ -12,10 +12,10 @@
 <header class="container-fluid bg-dark">
 <div class="container text-white p-2">
     <div class="row align-items-center">
-        <div class="col-lg-2">
+        <div class="col-lg-3">
             <h2><strong>Learning PHP</strong></h2>
         </div>
-        <nav class="col-lg-4 logo">
+        <nav class="col-lg-3 logo">
             <a href="index.php" class="text-white me-2">Home</a>
             <a href="about.php" class="text-white me-2">About</a>
         </nav>

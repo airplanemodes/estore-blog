@@ -30,7 +30,7 @@
     <div class="container">
         <h1>Your products</h1>
         <h4 class="text-success"><?= isset($_GET['msg']) ? filter_get("msg", $conn) : "" ?></h4>
-        <a href="product-add.php">Add new product</a>
+        <a href="product-add.php" class="btn btn-warning">Add new product</a>
         <table class="table table-striped">
             <thead>
                 <tr>

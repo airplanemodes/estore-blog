@@ -75,7 +75,7 @@
             <input type="text" name="img_url" class="form-control" value="<?= old('img_url') ?>">
                 <small class="text-danger"><?= showError("img_url", $errors) ?></small>
         </div>
-        <button name="submit" class="btn btn-primary mt-2">Add</button>
+        <button name="submit" class="btn btn-warning mt-2">Add</button>
         </form>
     </div>
 </main>
