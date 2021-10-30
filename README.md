@@ -10,6 +10,4 @@ The simple content management system.
 
 ### Login
 E-mail: php@php.com  
-Password: 123456  
-
-**© 2021 Airplane Modes Network**
+Password: 123456

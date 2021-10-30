@@ -1,9 +1,10 @@
 <?php
+    $page_title = "Home";
+
     include_once './connect.php';
     include_once './util.php';
-    include_once './header.php';
+    include './header.php';
 
-    $page_title = "Home";
 
     if ($user) {
         
@@ -15,7 +16,7 @@
         $result_pages = $conn->query($query_for_pages); // SQL query sending
         $total = mysqli_fetch_assoc($result_pages); // fetching a result row as an associative array
 
-        $per_page = 4;
+        $per_page = 8;
         $total_pages = ceil($total["total"]/$per_page);
         $page = isset($_GET["page"]) ? ($_GET["page"] - 1) * $per_page : 0 ;
 
@@ -32,9 +33,9 @@
         // echo "</pre>";
     }
 ?>
-<main class="container-fluid p-5">
+<main class="container-fluid p-5 mainpart">
     <div class="container">
-        <h1>Welcome</h1>
+        <h1>Welcome!</h1>
         <!-- if someone logged -->
         <?php if($user) : ?>
         <div class="d-flex fs-4">Pages:<?php for ($i = 0; $i < $total_pages; $i++) : ?>

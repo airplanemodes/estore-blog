@@ -1,5 +1,5 @@
 <?php
-// login security
+// Login security
 function user_verify() {
     $verify = false;
     if(isset($_SESSION['user_id'])) {
@@ -16,7 +16,7 @@ function user_verify() {
 };
 
 
-
+// SQL injection prevention
 function filter_post($_input_name, $_conn) {
     $input = trim(filter_input(INPUT_POST, $_input_name, FILTER_SANITIZE_STRING));
     $input = mysqli_real_escape_string($_conn, $input);
